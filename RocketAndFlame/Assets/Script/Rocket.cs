@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float rocketSpeed = 2f;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.A) && transform.position.x >= -6.5)
+        {
+            transform.position += new Vector3(-1, 0, 0) * rocketSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.S) && transform.position.y >= -3.5)
+        {
+            transform.position += new Vector3(0, -1, 0) * rocketSpeed * Time.deltaTime;
+        } 
+        if (Input.GetKey(KeyCode.D) && transform.position.x <= 6.5)
+        {
+            transform.position += new Vector3(1, 0, 0) * rocketSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.W) && transform.position.y <= 3.5)
+        {
+            transform.position += new Vector3(0, 1, 0) * rocketSpeed * Time.deltaTime;
+        }
     }
 }
